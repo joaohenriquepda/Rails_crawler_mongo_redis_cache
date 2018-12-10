@@ -19,9 +19,12 @@ gem 'puma', '~> 3.11'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bson_ext'
 gem 'jwt'
+gem 'mechanize'
 gem 'mongoid', '~> 6.1.0'
 gem 'msgpack', '~> 1.2', '>= 1.2.4'
+gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 gem 'rubocop'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
