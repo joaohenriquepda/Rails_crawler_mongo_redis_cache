@@ -12,12 +12,12 @@ gem 'puma', '~> 3.11'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 gem 'msgpack', '~> 1.2', '>= 1.2.4'
 gem 'mongoid', '~> 6.1.0'
 gem 'bson_ext'
-
+gem 'jwt'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
