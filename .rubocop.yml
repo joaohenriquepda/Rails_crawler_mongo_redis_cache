@@ -1,0 +1,25 @@
+AllCops:
+  TargetRubyVersion: 2.5
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'spec/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+
+Style/SymbolArray:
+  Enabled: true
+  EnforcedStyle: brackets
+Metrics/MethodLength:
+  Max: 40
+Metrics/AbcSize:
+  Max: 70
+Style/RedundantSelf:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Max: 25
+Metrics/PerceivedComplexity:
+  Max: 25
+Metrics/BlockNesting:
+  Max: 4  
