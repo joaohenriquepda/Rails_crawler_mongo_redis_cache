@@ -1,21 +1,14 @@
-# frozen_string_literal: true
+class Quote
+  include Mongoid::Document
+  field :text, type: String
+  field :author, type: String
+  field :author_about, type: String
+  field :tags, type: Array, default: []
 
-require 'rubygems'
-require 'nokogiri'
-require 'open-uri'
-require 'mechanize'
 
-# Class CrawlerQuotesController
-class CrawlerQuotesController < ApplicationController
-  def crawler_data
-    tag = params[:tag]
-
+  def self.crawler_data(tag)
     url = 'http://quotes.toscrape.com'
     page = Mechanize.new.get(url + '/tag/' + tag)
-
-    open('myfile.html', 'wb') do |f|
-      f.puts page.body
-    end
 
     archive = Nokogiri::HTML(open('myfile.html'))
     file = []
@@ -33,12 +26,15 @@ class CrawlerQuotesController < ApplicationController
           'author_about': url + q.at('a').attribute('href'),
           'tags': tags
         }
-
+        Quote.create(
+          'text': q.search('.text').text,
+          'author': q.search('.author').text,
+          'author_about': url + q.at('a').attribute('href'),
+          'tags': tags
+        )
         data.push(value)
       end
-      file.push(f.search('.quote'))
     end
     quotes = { 'quotes': data }
-    render json: quotes
   end
 end
