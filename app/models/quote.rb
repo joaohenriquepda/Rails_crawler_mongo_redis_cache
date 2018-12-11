@@ -1,6 +1,6 @@
 class Quote
   include Mongoid::Document
-  field :text, type: String
+  field :quote, type: String
   field :author, type: String
   field :author_about, type: String
   field :tags, type: Array, default: []
@@ -22,12 +22,13 @@ class Quote
         end
 
         value = {
-          'text': q.search('.text').text,
+          'quote': q.search('.text').text,
           'author': q.search('.author').text,
           'author_about': url + q.at('a').attribute('href'),
           'tags': tags
         }
-        Quote.create( value )
+        Quote.create(value)
+        data.push(value)
       end
     end
     quotes = { 'quotes': data }
