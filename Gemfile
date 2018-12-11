@@ -18,11 +18,13 @@ gem 'puma', '~> 3.11'
 # Gems project
 gem 'bcrypt', '~> 3.1.7'
 gem 'bson_ext'
+gem 'hiredis'
 gem 'jwt'
 gem 'mechanize'
 gem 'mongoid', '~> 6.1.0'
 gem 'msgpack', '~> 1.2', '>= 1.2.4'
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
+gem 'redis'
 gem 'rubocop'
 
 # Use Capistrano for deployment
