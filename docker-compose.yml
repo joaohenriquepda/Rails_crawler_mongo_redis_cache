@@ -16,6 +16,10 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
   redis:
     image: redis:latest
+    command: redis-server
+    ports:
+      - 6379:6379
+      - 6380:6380
   api_rails_mongo:
     build: ./
     command: rails s -b 0.0.0.0
@@ -27,3 +31,10 @@ services:
     depends_on:
       - mongo
       - redis
+#
+# networks:
+#   api_cache:
+#     ipam:
+#       drive: default
+#         config:
+#                 - subnet: 172.16.238.0/24

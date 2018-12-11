@@ -9,6 +9,21 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+
+  # config.cache_store = :redis_cache_store
+
+  # config.cache_store = :redis_cache_store, { driver: :hiredis, namespace: "my-app", compress: true, url: "redis://redis:6379/0" }
+  # config.session_store :cache_store, key: "inovamind"
+
+  # config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
+  # config.cache_store = :redis_cache_store, { url: "redis://redis:6379/0" }
+  #
+  # config.cache_store = :redis_store, {
+  #   expires_in: 1.hour,
+  #   namespace: 'cache',
+  #   redis: { host: 'redis', port: 6379, db: 1 },
+  # }
+
   # Do not eager load code on boot.
   config.eager_load = false
 

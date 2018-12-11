@@ -1,17 +1,12 @@
 # frozen_string_literal: true
 
-require 'rubygems'
-require 'nokogiri'
-require 'open-uri'
-require 'mechanize'
-
+# Class QuotesController]
 class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :update, :destroy]
 
   # GET /quotes
   def index
-    @quotes = Quote.all
-    render json: @quotes
+      render json:  Quote.all
   end
 
   # GET /quotes/1
@@ -44,18 +39,26 @@ class QuotesController < ApplicationController
     @quote.destroy
   end
 
-  def crawler
-    render json: Quote.crawler_data(params[:tag])
+  # POST /quotes/:tag
+  def search_quotes_by_tag
+    quotes = $redis.get(params[:tag])
+    if quotes.nil?
+      quotes = Quote.crawler_data(params[:tag])
+      $redis.set(params[:tag], quotes)
+      $redis.expire(params[:tag],2.hours.to_i)
+    end
+    render json: quotes
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_quote
-      @quote = Quote.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def quote_params
-      params.require(:quote).permit(:quote, :author, :author_about)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_quote
+    @quote = Quote.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def quote_params
+    params.require(:quote).permit(:quote, :author, :author_about)
+  end
 end

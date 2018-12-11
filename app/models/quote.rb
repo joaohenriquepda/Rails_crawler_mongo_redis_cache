@@ -5,8 +5,9 @@ class Quote
   field :author_about, type: String
   field :tags, type: Array, default: []
 
-
   def self.crawler_data(tag)
+    "aqui"
+    puts tag
     url = 'http://quotes.toscrape.com'
     page = Mechanize.new.get(url + '/tag/' + tag)
 
@@ -26,13 +27,7 @@ class Quote
           'author_about': url + q.at('a').attribute('href'),
           'tags': tags
         }
-        Quote.create(
-          'text': q.search('.text').text,
-          'author': q.search('.author').text,
-          'author_about': url + q.at('a').attribute('href'),
-          'tags': tags
-        )
-        data.push(value)
+        Quote.create( value )
       end
     end
     quotes = { 'quotes': data }
