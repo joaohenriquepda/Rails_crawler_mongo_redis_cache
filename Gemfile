@@ -18,6 +18,7 @@ gem 'puma', '~> 3.11'
 # Gems project
 gem 'bcrypt', '~> 3.1.7'
 gem 'bson_ext'
+gem 'fast_jsonapi'
 gem 'hiredis'
 gem 'jwt'
 gem 'mechanize'

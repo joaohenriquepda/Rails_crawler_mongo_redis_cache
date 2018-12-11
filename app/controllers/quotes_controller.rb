@@ -6,7 +6,8 @@ class QuotesController < ApplicationController
 
   # GET /quotes
   def index
-      render json:  Quote.all
+      @quotes = Quote.all
+      render json:  QuotesSerializer.new(@quotes).serialized_json
   end
 
   # GET /quotes/1
@@ -44,6 +45,7 @@ class QuotesController < ApplicationController
     quotes = $redis.get(params[:tag])
     if quotes.nil?
       quotes = Quote.crawler_data(params[:tag])
+      puts quotes
       $redis.set(params[:tag], quotes)
       $redis.expire(params[:tag],2.hours.to_i)
     end

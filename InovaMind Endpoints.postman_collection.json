@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "02fcde4e-3528-49cb-9ad7-74ecf5cba818",
+		"name": "InovaMind Endpoints",
+		"description": "Endpoints de acesso para o teste de desenvolvedor Ruby on Rails para InovaMind",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user\":\n\t\t{\n\t\t\t\"name\":\"Joao Henrique\",\t\n\t\t\t\"email\":\"joaohenrique.p.almeida@gmail.com\",\n\t\t\t\"password\":\"joaohenrique\",\n\t\t\t\"password_confirmation\":\"joaohenrique\"\n\t\t}\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get new token access",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\n\t\"email\":\"joaohenrique.p.almeida@gmail.com\",\n\t\"password\":\"joao1010\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/user_auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user_auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search quotes by tag",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authentication",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjp7IiRvaWQiOiI1YzEwMTE3ZGRiODljZjAwMDEwODA5OTEifSwidG9rZW5fdHlwZSI6ImNsaWVudF9hMiIsImV4cCI6MTU0NDU3MTMyOX0.NLZRyt_vQHQpYbv669FQwnMbmshwQ18mNIzwvCEaqTA"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/quotes/justice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"quotes",
+						"justice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all quotes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authentication",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjp7IiRvaWQiOiI1YzEwMGNiZWViMzUxNjAwMDE3NWM3NTcifSwidG9rZW5fdHlwZSI6ImNsaWVudF9hMiIsImV4cCI6MTU0NDU3MDExM30.jm2P0op80WuHaRV3d-D5k5uD-PPRr0owb4R1DtViTsI"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/quotes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"quotes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authentication",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjp7IiRvaWQiOiI1YzEwMTE3ZGRiODljZjAwMDEwODA5OTEifSwidG9rZW5fdHlwZSI6ImNsaWVudF9hMiIsImV4cCI6MTU0NDU3MTMyOX0.NLZRyt_vQHQpYbv669FQwnMbmshwQ18mNIzwvCEaqTA"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f1382074-34d2-4afb-a3d4-19b8e3f58455",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "095ad5ab-e1dd-4570-afd5-1f9802ffae6f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
