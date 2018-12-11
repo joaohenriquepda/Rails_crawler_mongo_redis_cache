@@ -45,6 +45,7 @@ class QuotesController < ApplicationController
     quotes = $redis.get(params[:tag])
     if quotes.nil?
       quotes = Quote.crawler_data(params[:tag])
+      puts quotes
       $redis.set(params[:tag], quotes)
       $redis.expire(params[:tag],2.hours.to_i)
     end

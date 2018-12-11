@@ -6,8 +6,6 @@ class Quote
   field :tags, type: Array, default: []
 
   def self.crawler_data(tag)
-    "aqui"
-    puts tag
     url = 'http://quotes.toscrape.com'
     page = Mechanize.new.get(url + '/tag/' + tag)
 
@@ -31,6 +29,6 @@ class Quote
         data.push(value)
       end
     end
-    quotes = { 'quotes': data }
+    data
   end
 end
